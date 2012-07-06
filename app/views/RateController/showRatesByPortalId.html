@@ -1,0 +1,81 @@
+#{extends 'main.html'/}
+<div>
+    <table>
+        <tr>
+            <td>#{a @showPortals()}Portals#{/a}</td>
+            <td>&nbsp;>&nbsp;</td>
+            <td>Rates</td>
+        </tr>
+    </table>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Client</th>
+        <th>Product</th>
+        <th>Operator</th>
+        <th>Description</th>
+        <th>End Price</th>
+        <th>VAT</th>
+        <th>Ex VAT</th>
+        <th>Share Factor</th>
+        <th>RDML Share</th>
+        <th>Operator Share</th>
+        <th>CP Share</th>
+        <th>Other Cost</th>
+        <th>Min Share</th>
+        <th>Count Factor</th>
+        <th>Package</th>
+        <th>Valid To</th>
+        <th>Billing Interface</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{list items:rates, as:'rate'}
+
+    <tr>
+        <td class="ratesButton">
+            <!--<input class="ratesButton" type="button" value="Update"
+                   onclick="
+                           $.ajax({
+                           type: 'POST',
+                           url: '/rates/update',
+                           data : 'rateId=${rate.id}'
+                           success: function(data, status) {
+                            window.location.href='/rates/showRate?id='+'${rate.id}'
+                           }
+                           });
+                           "/>-->
+            #{a @showRate(rate.id)}Update#{/a}
+        </td>
+        <td class="ratesButton">
+            <input id="deleteRate" class="confirm" type="button" value="Delete"
+                   onclick="
+                           doDeleteRateConfirm('${rate.id}', '${rate.domain.name}', '${rate.product.name}');
+                           "/>
+        </td>
+        <td class="ratesText">${rate.domain.name}</td>
+        <td class="ratesText">${rate.product.name}</td>
+        <td class="ratesText">${rate.portal.name}</td>
+        <td class="ratesText">${rate.description}</td>
+        <td class="ratesNumber">${rate.endPrice.format("#")}</td>
+        <td class="ratesNumber">${(rate.vat/100).format("#%")}</td>
+        <td class="ratesNumber">${rate.priceExVAT.format("#")}</td>
+        <td class="ratesNumber">${rate.shareFactor}</td>
+        <td class="ratesNumber">${rate.rdmlShare.format("#")}</td>
+        <td class="ratesNumber">${rate.operatorShare.format("#")}</td>
+        <td class="ratesNumber">${rate.cpShare.format("#")}</td>
+        <td class="ratesNumber">${rate.otherCost}</td>
+        <td class="ratesNumber">${rate.minShare}</td>
+        <td class="ratesNumber">${rate.countFactor}</td>
+        <td class="ratesText">${rate.isPackage ? 'YES':''}</td>
+        <td class="ratesText">${rate.validTo.format("dd.MM.yyyy")}</td>
+        <td class="ratesText">${rate.billingInterface.procedureName}</td>
+    </tr>
+    #{/list}
+    </tbody>
+</table>
+<p>#{a @showPortals()}<< Back#{/a}</p>

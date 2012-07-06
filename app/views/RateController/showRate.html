@@ -1,0 +1,330 @@
+#{extends 'main.html'/}
+
+<div>
+    <table>
+        <tr>
+            <td>#{a @showPortals()}Portals#{/a}</td>
+            <td>&nbsp;>&nbsp;</td>
+            <td>#{a @showRatesByPortalId(rate.portalID)}Rates#{/a}</td>
+            <td>&nbsp;>&nbsp;</td>
+            <td>Rate</td>
+        </tr>
+    </table>
+</div>
+
+#{form @updateRate()}
+<p>Info of ${rate.domain.name} ${rate.product.name}</p>
+
+<table>
+    <tr>
+        <td>Client ID:&nbsp;</td>
+        <td>
+        #{field 'rate.clientID'}
+            <span>
+                #{select field.name,
+        id: field.name,
+        items: domains,
+        value: rate.clientID,
+        valueProperty:'domainID',
+        labelProperty:'name'/}
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td>Portal:&nbsp;</td>
+        <td>
+        #{field 'rate.portalID'}
+            <span>
+                #{select field.name,
+        id: field.name,
+        items: portals,
+        value: rate.portalID,
+        valueProperty:'domainID',
+        labelProperty:'name'/}
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Description:&nbsp;</td>
+        <td>
+        #{field 'rate.description'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="80" value="${rate.description}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>End Price:&nbsp;</td>
+        <td>
+        #{field 'rate.endPrice'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.endPrice}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>VAT:&nbsp;</td>
+        <td>
+        #{field 'rate.vat'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.vat}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Price ex VAT:&nbsp;</td>
+        <td>
+        #{field 'rate.priceExVAT'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.priceExVAT}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Share Factor:&nbsp;</td>
+        <td>
+        #{field 'rate.shareFactor'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.shareFactor}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>RDML share:&nbsp;</td>
+        <td>
+        #{field 'rate.rdmlShare'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.rdmlShare}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Operator Share:&nbsp;</td>
+        <td>
+        #{field 'rate.operatorShare'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.operatorShare}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>CP Share:&nbsp;</td>
+        <td>
+        #{field 'rate.cpShare'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.cpShare}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Other Cost:&nbsp;</td>
+        <td>
+        #{field 'rate.otherCost'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.otherCost}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Min Share:&nbsp;</td>
+        <td>
+        #{field 'rate.minShare'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.minShare}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Max Share:&nbsp;</td>
+        <td>
+        #{field 'rate.maxShare'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.maxShare}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Count Factor:&nbsp;</td>
+        <td>
+        #{field 'rate.countFactor'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.countFactor}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Diff Factor:&nbsp;</td>
+        <td>
+        #{field 'rate.diffFactor'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.diffFactor}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Billing Interface:&nbsp;</td>
+        <td>
+        #{field 'rate.interfaceID'}
+            <span>
+                #{select field.name,
+        id: field.name,
+        items: interfaces,
+        value: rate.interfaceID,
+        valueProperty:'interfaceID',
+        labelProperty:'procedureName'/}
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Operator:&nbsp;</td>
+        <td>
+        #{field 'rate.operatorID'}
+            <span>
+                #{select field.name,
+        id: field.name,
+        items: operators,
+        value: rate.operatorID,
+        valueProperty:'id',
+        labelProperty:'name'/}
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Valid From Date:&nbsp;</td>
+        <td>
+        #{field 'validFrom'}
+            <span>
+                <input id="${field.name}" name="${field.name}" type="text" value="${rate.validFrom.format("dd/MM/yyyy")}" size="15"/>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#${field.name}').datepicker({
+                            inline: true,
+                            dateFormat: 'dd/mm/yy',
+                            gotoCurrent: true
+                        });
+
+                    });
+                </script>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Valid To Date:&nbsp;</td>
+        <td>
+        #{field 'validTo'}
+            <span>
+                <input id="${field.name}" name="${field.name}" type="text" value="${rate.validTo.format("dd/MM/yyyy")}" size="15"/>
+                <script type="text/javascript">
+                    $(function() {
+                        $('#${field.name}').datepicker({
+                            inline: true,
+                            dateFormat: 'dd/mm/yy',
+                            gotoCurrent: true
+                        });
+
+                    });
+                </script>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Channel ID:&nbsp;</td>
+        <td>
+        #{field 'rate.channelID'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.channelID}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Subscription ID:&nbsp;</td>
+        <td>
+        #{field 'rate.subscriptionID'}
+            <span>
+                <input type="text" id="${field.name}" name="${field.name}" size="10" value="${rate.subscriptionID}"/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+    <tr>
+        <td>Package:&nbsp;</td>
+        <td>
+        #{field 'rate.isPackage'}
+            <span>
+                <input type="checkbox" name="checkPackage" ${rate.isPackage ? 'checked':''}/>
+            </span>
+        #{/field}
+            &nbsp;&nbsp;
+        </td>
+    </tr>
+
+</table>
+
+<p>
+    #{a @showRatesByPortalId(rate.portalID)}<< Back#{/a}
+    &nbsp;
+    <input type="submit" value="Save">
+</p>
+
+#{/form}

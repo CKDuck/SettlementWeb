@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+
+# Rates
+GET     /rates/showRates                        RateController.showRates
+GET     /rates/portals                          RateController.showPortals
+GET     /rates/portal                           RateController.showRatesByPortalId
+GET     /rates/showRate                         RateController.showRate
+POST    /rates/update                           RateController.updateRate
+POST    /rates/delete                           RateController.deleteRate
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+

@@ -1,0 +1,26 @@
+input.ratesButton {
+    height:60px;
+    width: 60px;
+
+}
+
+td.ratesButton {
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+}
+td.ratesText {
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+    padding: 4px;
+    max-width: 180px;
+    line-break: auto;
+}
+
+td.ratesNumber {
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+    padding: 4px;
+    text-align: right;
+    min-width: 40px;
+    max-width: 180px;
+}

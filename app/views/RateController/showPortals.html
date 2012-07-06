@@ -1,0 +1,26 @@
+<div>
+    <table>
+        <tr>
+            <td>Portals</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+#{form @RateController.selectPortal(), method:'POST', enctype :'multipart/form-data'}
+    #{field 'portalId'}
+        <span>
+            #{select 'portalId',
+        id:'portalSelect',
+        items :portals,
+        value : 138,
+        valueProperty:'domainID',
+        labelProperty:'name'/}
+        </span>
+    #{/field}
+    &nbsp;&nbsp;
+        <span class="buttons">
+            <input type="submit" value="Choose">
+        </span>
+#{/form}
+</div>
