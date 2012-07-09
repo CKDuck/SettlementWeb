@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+GET     /                                       RateController.showPortals
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -19,6 +19,7 @@ GET     /rates/portal                           RateController.showRatesByPortal
 GET     /rates/showRate                         RateController.showRate
 POST    /rates/update                           RateController.updateRate
 POST    /rates/delete                           RateController.deleteRate
+POST    /rates/create                           RateController.createRate
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

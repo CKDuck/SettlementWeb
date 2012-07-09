@@ -1,7 +1,6 @@
 package models;
 
 import play.db.jpa.GenericModel;
-import play.db.jpa.Model;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,19 +23,19 @@ public class Rate extends GenericModel {
     public Long id;
 
     @Column(name = "Description")
-    public String description;
+    public String description = "";
     @Column(name = "EndPrice")
-    public Integer endPrice;
+    public Integer endPrice = 0;
     @Column(name = "ShareFactor")
-    public Double shareFactor;
+    public Double shareFactor = 0.1;
     @Column(name = "OperatorShare")
-    public Integer operatorShare;
+    public Integer operatorShare = 0;
     @Column(name = "OtherCost")
-    public Double otherCost;
+    public Double otherCost = 0.0;
     @Column(name = "MinShare")
-    public Integer minShare;
+    public Integer minShare = 0;
     @Column(name = "MaxShare")
-    public Integer maxShare;
+    public Integer maxShare = 999999;
     @Column(name = "ProductID")
     public Long productID;
     @Column(name = "InterfaceID")
@@ -44,9 +43,9 @@ public class Rate extends GenericModel {
     @Column(name = "OperatorID")
     public Long operatorID;
     @Column(name = "CountFactor")
-    public Integer countFactor;
+    public Integer countFactor = 0;
     @Column(name = "DiffFactor")
-    public Double diffFactor;
+    public Double diffFactor = 0.0;
     @Column(name = "ValidFrom")
     public Date validFrom;
     @Column(name = "ValidTo")
@@ -56,21 +55,21 @@ public class Rate extends GenericModel {
     @Column(name = "PortalID")
     public Long portalID;
     @Column(name = "CPShare")
-    public Double cpShare;
+    public Double cpShare = 0.0;
     @Column(name = "ChannelID")
-    public Integer channelID;
+    public Integer channelID = 0;
     @Column(name = "SubscriptionID")
-    public Integer subscriptionID;
+    public Integer subscriptionID = 0;
     @Column(name = "Package")
-    public Integer isPackage;
+    public Integer isPackage = 0;
     @Column(name = "Currency")
-    public String currency;
+    public String currency = "EU";
     @Column(name = "VAT")
-    public Double vat;
+    public Double vat = 25.0;
     @Column(name = "PriceExVAT")
-    public Double priceExVAT;
+    public Double priceExVAT = 0.0;
     @Column(name = "RDMLShare")
-    public Double rdmlShare;
+    public Double rdmlShare = 0.0;
 
     @Transient
     public Domain domain;

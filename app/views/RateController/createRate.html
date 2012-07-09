@@ -12,9 +12,9 @@
     </table>
 </div>
 
-#{form @updateRate()}
-<p>Info of ${rate.domain.name} ${rate.product.name}</p>
-<input type="hidden" id="rate.id" name="rate.id" value="${rate.id}"/>
+#{form @insertRate()}
+<p>Create new Rate</p>
+
 <table>
 <tr>
     <td>Client ID:&nbsp;</td>
@@ -59,7 +59,7 @@
                 #{select field.name,
         id: field.name,
         items: products,
-        value:rate.productID,
+        value: rate.productID,
         valueProperty:'id',
         labelProperty:'name'/}
             </span>
@@ -68,7 +68,6 @@
     </td>
     <td>Name of billed product.</td>
 </tr>
-
 
 <tr>
     <td>Description:&nbsp;</td>
@@ -294,8 +293,7 @@
     <td>
         #{field 'validFrom'}
             <span>
-                <input id="${field.name}" name="${field.name}" type="text"
-                       value="${rate.validFrom.format("dd/MM/yyyy")}" size="15"/>
+                <input id="${field.name}" name="${field.name}" type="text" size="15"/>
                 <script type="text/javascript">
                     $(function () {
                         $('#${field.name}').datepicker({
@@ -318,8 +316,7 @@
     <td>
         #{field 'validTo'}
             <span>
-                <input id="${field.name}" name="${field.name}" type="text" value="${rate.validTo.format("dd/MM/yyyy")}"
-                       size="15"/>
+                <input id="${field.name}" name="${field.name}" type="text" size="15"/>
                 <script type="text/javascript">
                     $(function () {
                         $('#${field.name}').datepicker({

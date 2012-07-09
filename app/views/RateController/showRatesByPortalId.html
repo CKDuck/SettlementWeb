@@ -12,8 +12,12 @@
 <table>
     <thead>
     <tr>
-        <th></th>
-        <th></th>
+        <th colspan="2">
+        #{form @createRate(portalId)}
+            <input type="submit" value="Create Rate">
+        #{/form}
+        </th>
+        <!-- empty column -->
         <th>Client</th>
         <th>Product</th>
         <th>Operator</th>
